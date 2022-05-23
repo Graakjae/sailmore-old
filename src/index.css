@@ -1,0 +1,387 @@
+body {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+code {
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+h3 {
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+.page {
+  padding: 1em;
+  padding-bottom: 4em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center1 {
+  text-align: center;
+  margin-top: 200px;
+}
+
+
+/* ---------- animations ---------- */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- nav  ---------- */
+nav {
+  width: auto;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+nav a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  font-size: 0.5rem;
+}
+
+nav img {
+  height: 20px;
+}
+
+nav a.active {
+  background-color: #ebebeb;
+  color: black;
+}
+
+/* ---------- grid container  ---------- */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2em;
+}
+
+.grid-container > article {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+  padding: 0;
+  background-color: var(--white);
+  transition: 0.5s;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.grid-container > article img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* ---------- form  ---------- */
+
+form {
+  margin: auto;
+  max-width: 350px;
+}
+
+form button {
+  padding: 12px 15px;
+  font-size: 1em;
+  width: auto;
+  max-width: 350px;
+}
+
+form button a {
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+
+
+/* ---------- buttons  ---------- */
+
+button {
+  font-weight: 300;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: #3B7E8D;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  font-size: 0.8em;
+  display: block;
+  margin: 3em auto 0;
+  border-radius: 50px;
+  font-family: "Lato", sans-serif;
+}
+
+button.button {
+  background-color: #6ecd6b;
+  color: white;
+  margin-bottom: 50px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+button.button::after {
+  content: "\002B";
+  font-size: 1rem;
+  margin-left: 20px;
+}
+
+button.button-delete {
+  background-color: #9c5452;
+  content: "\2212";
+  color: white;
+  margin-bottom: 50px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+button.button-delete::after {
+  content: "\2212";
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+button.button-fixed {
+  background-color: #6ecd6b;
+  color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  position: fixed;
+  bottom: 13%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 11;
+  width: 80%;
+  max-width: 300px;
+  height: 50px;
+  font-size: 17px;
+}
+
+button.button-logud {
+  background-color: #aec5ad;
+  color: white;
+  margin-bottom: 100px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+input {
+  margin: 1em auto;
+  width: 100%;
+  max-width: 350px;
+  padding: 1em;
+  box-sizing: border-box;
+  display: block;
+  border: solid 1px #c1c1c1;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.image-preview {
+  width: 100%;
+  max-width: 350px;
+  height: 200px;
+  object-fit: cover;
+  margin: 1em auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+form .file-input {
+  display: none;
+}
+
+/* ---------- loader styling ---------- */
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+  overflow: hidden;
+  background: var(--loader-background-color);
+  text-align: center;
+}
+
+.spinner {
+  border: 5px solid #d8e0d8;
+  border-radius: 50%;
+  border-top: 5px solid #6ecd6b;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  /* Safari */
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+
+/*----------- Logo ---------*/
+.logo {
+  margin: auto;
+  display: block;
+  align-items: center;
+  width: 50%;
+}
+
+/* ---------- Profile  ---------- */
+
+.profilePage {
+  border-radius: 50px;
+}
+
+/*------- sign up page -----*/
+.lille-tekst {
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ---------- Øvelser/Ny plan  ---------- */
+
+.ovelser {
+  margin: 1em auto;
+  width: 350px;
+  box-sizing: border-box;
+  display: block;
+  border: solid 1px #c1c1c1;
+  border-radius: 15px;
+  padding-left: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.ovelser2 {
+  margin: 1em auto;
+  width: 350px;
+  box-sizing: border-box;
+  display: block;
+  border: solid 1px #c1c1c1;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  align-items: center;
+}
+
+.right{
+  float: right;
+}
+
+select{
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  height: 30px;
+}
+.pad{
+  margin-left: 15px;
+}
+/* ---------- Filter  ---------- */
+
+.filter-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+
+input.checkbox {
+  box-shadow: none;
+  background-color: black;
+}
+
+
+/* ---------- fremskridt  ---------- */
+
+.fremskridt{
+  padding-bottom: 100px;
+}
+
+.fremskridt img {
+  max-width: 300px;
+  padding-bottom: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fremskridt h3 {
+  text-align: center;
+}
+
+/* ---------- front page  ---------- */
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.square50 {
+  width: 47%;
+}
+
+.square { 
+  background-color: white;
+  height: 250px;
+  width: 100%;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+}
+
+.captain {
+  padding-top: 10px;
+  width: 80%;
+  display: block;
+  margin: auto;
+}
