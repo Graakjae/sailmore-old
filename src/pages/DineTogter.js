@@ -3,6 +3,8 @@ import { onSnapshot } from "firebase/firestore";
 import { favsRef } from "../firebase-config";
 import PostCard from "../components/PostCard";
 import { useNavigate } from "react-router-dom";
+import knap from "../assets/img/nyTogtKnap.png";
+
 
 export default function HomePage({ post, showLoader }) {
     const [posts, setPosts] = useState([]);
@@ -29,10 +31,12 @@ export default function HomePage({ post, showLoader }) {
 
     return (
         <section className="page">
-            <button className="button-fixed" onClick={handleClick}>Opret træningsplan</button>
+           
+                <img src={knap} alt="nyt togt knap" className="img-fixed" onClick={handleClick}/>
+           
             
             <section className="grid-container">
-                <h1>Dine træningsplaner</h1>
+                <h1>Dine togter</h1>
                 {posts.map(post => (
                     <PostCard post={post} key={post.id} />
                 ))}

@@ -2,25 +2,32 @@ import { addDoc } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { favsRef } from "../firebase-config";
+import imgPlaceholder from "../assets/img/img-placeholder.jpg";
+
 
 export default function NewFavList({ showLoader }) {
     const [posts, setPosts] = useState([]);
     const [selectedPosts, setSelectedPosts] = useState([]);
     const [selectedPost, setSelectedPost] = useState({});
     const [name, setName] = useState("");
-    const [Set, setSet] = useState(0);
-    const [Reps, setReps] = useState(0);
+    const [sejlområde, setSejlområde] = useState({});
+
+    const [image, setImage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+
 
     const navigate = useNavigate();
 
     useEffect(() => {
         async function getPosts() {
-            const url = "https://api.jsonbin.io/b/623af66406182767437ddcdf/3";
+            const url = "https://api.jsonbin.io/b/628ca823402a5b38020b1aff";
             const response = await fetch(url);
             const data = await response.json();
             setPosts(data);
             console.log(data);
             showLoader(false);
+            
         }
         getPosts();
     }, [showLoader]);
@@ -30,67 +37,66 @@ export default function NewFavList({ showLoader }) {
 
         const newFavList = {
             name: name,
-            posts: selectedPosts
+            posts: selectedPosts,
+            image: image,
+            sejlområde: sejlområde
         };
 
         await addDoc(favsRef, newFavList);
-        navigate("/");
+        navigate("/dinetogter");
     }
 
-    function handleAddPost() {
-        const post = posts.find(post => post.id == selectedPost);
-        console.log(Set, Reps, post);
-        post.Set = Set;
-        post.Reps = Reps;
-        setSelectedPosts(prevSelectedPosts => [...prevSelectedPosts, post]);
-    }
+    
 
-    function handleRemove() {
-        console.log(selectedPost);
-        const filteredData = selectedPosts.filter(post => post.id != selectedPost);
-        setSelectedPosts(filteredData);
+    function handleImageChange(event) {
+        const file = event.target.files[0];
+        if (file.size < 500000) {
+            // image file size must be below 0,5MB
+            const reader = new FileReader();
+            reader.onload = event => {
+                setImage(event.target.result);
+            };
+            reader.readAsDataURL(file);
+            setErrorMessage(""); // reset errorMessage state
+        } else {
+            // if not below 0.5MB display an error message using the errorMessage state
+            setErrorMessage("The image file is too big!");
+        }
     }
 
     return (
         <section className="page">
-            <h1>Ny træningsplan</h1>
+            <h1>Ny sejlads</h1>
             <form onSubmit={handleSubmit}>
+            <label>
+                    Image
+                    <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+                    <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = imgPlaceholder)} />
+                </label>
+            
                 <label>
-                    Navngiv plan
+                    Navngiv din sejlads
                     <input type="text" placeholder="Navngiv plan" onChange={e => setName(e.target.value)} />
                 </label>
-                <label>
-                    <section className="selected-posts">
-                        {selectedPosts.length === 0 && <p>Ingen øvelser er tilføjet endnu</p>}
-                        {selectedPosts.map(post => (
-                            <article class="ovelser2" key={post.id}>
-                                {post.name} Set: {post.Set} - Reps: {post.Reps}<a className="right" onClick={() => handleRemove(post.id)}>X</a>
-                            </article>
-                        ))}
-                    </section>
-                </label>
+                
                 <section className="add-posts">
                     <label>
-                        Vælg øvelser
-                        <select value={selectedPost} onChange={e => setSelectedPost(e.target.value)}>
-                            <option>Øvelser</option>
+                        Vælg sejlområde
+                        <select onChange={e => setSejlområde(e.target.value)}>
+                            <option>Sejlområde</option>
                             {posts.map(post => (
-                                <option value={post.id} key={post.id}>
+                                <option value={post.name} key={post.name}>
                                     {post.name}
                                 </option>
                             ))}
                         </select>
                     </label>
-                    <input type="number" placeholder="Set" onChange={e => setSet(e.target.value)} />
 
-                    <input type="number" placeholder="Reps" onChange={e => setReps(e.target.value)} />
-
-                    <button type="button" onClick={handleAddPost}>
-                        Tilføj øvelse
-                    </button>
+                    
                 </section>
 
-                <button type="submit">Opret træningsplan</button>
+                <button type="submit">Opret togt</button>
+                <p className="text-error">{errorMessage}</p>
             </form>
         </section>
     );

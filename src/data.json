@@ -1,0 +1,87 @@
+[
+  {
+    "id": 0,
+    "name": "Karl",
+    "distance": "Developer",
+    "age": 26,
+    "image": "1.jpg",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  },
+  {
+    "id": 1,
+    "name": "Grappa",
+    "distance": "1 km away",
+    "distanceIcon": "distance.png",
+    "image": "https://gdkfiles.visitdenmark.com/files/484/227559_grappa-piccolo-aarhus2.jpg?width=1024",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  },
+  {
+    "id": 2,
+    "name": "Rømer",
+    "distance": "2 km away",
+    "distanceIcon": "distance.png",
+    "image": "https://gdkfiles.visitdenmark.com/files/484/86449_Romer_Brunch__Bistro.jpg?width=987",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  },
+  {
+    "id": 3,
+    "name": "Aarhus brætspilscafe",
+    "distance": "5 km away",
+    "distanceIcon": "distance.png",
+    "image": "https://gdkfiles.visitdenmark.com/files/484/209363_Aarhus-Braetspilscafe-indendoers.jpg?width=987",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  },
+  {
+    "id": 4,
+    "name": "Fika",
+    "distance": "0,5 km away",
+    "distanceIcon": "distance.png",
+    "image": "https://gdkfiles.visitdenmark.com/files/407/212670_default-ko-billede.jpg?width=987",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  },
+  {
+    "id": 5,
+    "name": "Malling kro",
+    "distance": "2,6 km away",
+    "distanceIcon": "distance.png",
+    "image": "https://gdkfiles.visitdenmark.com/files/484/241243_malling-kro-restaurant-1-1024.jpg?width=987",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  },
+  {
+    "id": 6,
+    "name": "Malling kro",
+    "distance": "3 km away",
+    "distanceIcon": "distance.png",
+    "image": "https://gdkfiles.visitdenmark.com/files/484/157916_Caf-Hack-David-Bering.jpg?width=987",
+    "category": "restaurant.png",
+    "likedUsers": [],
+    "superLikedUsers": [],
+    "dislikedUsers": [],
+    "likedBy": []
+  }
+]
+

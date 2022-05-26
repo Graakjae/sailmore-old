@@ -4,13 +4,62 @@ import indbakke from "../assets/img/nav/indbakke.png";
 import gastehat from "../assets/img/nav/gastehat.png";
 import profile from "../assets/img/nav/profile.png";
 
+import dinetogterBlue from "../assets/img/nav/dinetogter-blue.png";
+import profileBlue from "../assets/img/nav/profile-blue.png";
+import indbakkeBlue from "../assets/img/nav/indbakke-blue.png";
+import gastehatBlue from "../assets/img/nav/gastehat-blue.png";
+
+
 export default function Nav() {
     return (
         <nav>
-            <NavLink to="/posts"><img src= {gastehat} alt="nav icon" ></img><p>Udforsk</p></NavLink>
-            <NavLink to="/ovelser"><img src= {dinetogter} alt="nav icon" ></img><p>Dine togter</p></NavLink>    
-            <NavLink to="/fremskridt"><img src= {indbakke} alt="nav icon" ></img><p>Indbakke</p></NavLink>
-            <NavLink to="/profile"><img src= {profile} alt="nav icon" ></img><p>Profil</p></NavLink>
+            <NavLink to="/" children={({ isActive }) => {
+                const file = isActive ? gastehatBlue : gastehat;
+                return (
+                    <>
+                    <img src={file} alt="navicon"/>
+                    <p>Udforsk</p>
+                    </>
+                );
+            }}
+            />
+            
+
+            <NavLink to="/dineTogter" children={({ isActive }) => {
+                const file2 = isActive ? dinetogterBlue : dinetogter;
+            return (
+            <>
+                <img src={file2} alt="navicon"/>
+                <p>Dine togter</p>      
+            </>
+                );
+            }}
+            />
+            
+            <NavLink to="/indbakke" children={({ isActive }) => {
+                const file3 = isActive ? indbakkeBlue : indbakke;
+            return (
+            <>
+                <img src={file3} alt="navicon"/>
+                <p>Indbakke</p>      
+            </>
+                );
+            }}
+            />            
+            
+            <NavLink to="/profile" children={({ isActive }) => {
+                const file4 = isActive ? profileBlue : profile;
+            return (
+            <>
+                <img src={file4} alt="navicon"/>
+                <p>Profil</p>      
+            </>
+                );
+            }}
+            />
+
+
+            
         </nav>
     );
 }

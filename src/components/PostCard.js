@@ -4,7 +4,7 @@ export default function PostCard({ post }) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate(`plan/${post.id}`);
+        navigate(`/dinetogter/plan/${post.id}`);
     }
 
     return (

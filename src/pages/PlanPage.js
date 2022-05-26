@@ -22,30 +22,30 @@ export default function UpdatePage({ showLoader }) {
     }, [showLoader, postId]); 
 
     async function deletePost() {
-        const confirmDelete = window.confirm(`Er du sikker på du vil slette denne plan?, ${post.name}?`); 
+        const confirmDelete = window.confirm(`Er du sikker på du vil slette ${post.name}?`); 
         if (confirmDelete) {
             
             showLoader(true);
             const docRef = doc(favsRef, postId); 
             await deleteDoc(docRef); 
-            navigate("/");
+            navigate("/dinetogter");
         }
     }
 
     return (
         <section className="page">
             <h1>{post.name}</h1>
+            <img src={post.image} alt={post.title} className="captain" />
+            <p>{post.sejlområde}</p>
             {post.posts?.map(øvelse => (
                 <article className="ovelser">
                     <h2>{øvelse.name}</h2>
-                    <p>
-                       Set: {øvelse.Set} Reps: {øvelse.Reps}
-                    </p>
+                    
                 </article>
             ))}
             
             <button className="button-delete" onClick={deletePost}>
-                Slet træningsplan
+                Slet togt
             </button>
         </section>
     );

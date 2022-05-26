@@ -1,6 +1,6 @@
 import { Routes, Navigate, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import PostsPage from "./pages/PostsPage";
+import DineTogter from "./pages/DineTogter";
 import PlanPage from "./pages/PlanPage";
 import Loader from "./components/Loader";
 import { useState } from "react";
@@ -8,9 +8,9 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProfilePage from "./pages/ProfilePage";
-import FremskridtPage from "./pages/FremskridtPage"
+import Indbakke from "./pages/Indbakke"
 import FrontPage from "./pages/FrontPage";
-import OvelserPage from "./pages/OvelserPage";
+import Udforsk from "./pages/Udforsk";
 import NyPlanPage from "./pages/NyPlanPage";
 
 function App() {
@@ -35,11 +35,11 @@ function App() {
         <>
             <Nav />
             <Routes>
-                <Route path="/" element={<PostsPage showLoader={setShowLoader} />} />
-                <Route path="/plan/:id" element={<PlanPage showLoader={setShowLoader} />} />
+                <Route path="/" element={<Udforsk showLoader={setShowLoader} />} />
+                <Route path="/dinetogter/plan/:id" element={<PlanPage showLoader={setShowLoader} />} />
+                <Route path="/dinetogter" element={<DineTogter showLoader={setShowLoader} />} />
                 <Route path="/profile" element={<ProfilePage showLoader={setShowLoader} />} />
-                <Route path="/Fremskridt" element={<FremskridtPage showLoader={setShowLoader} />} />
-                <Route path="/ovelser" element={<OvelserPage showLoader={setShowLoader} />} />
+                <Route path="/indbakke" element={<Indbakke showLoader={setShowLoader} />} />
                 <Route path="/ny-plan" element={<NyPlanPage showLoader={setShowLoader} />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>

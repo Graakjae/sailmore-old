@@ -79,9 +79,9 @@ nav img {
   height: 20px;
 }
 
+
 nav a.active {
-  background-color: #ebebeb;
-  color: black;
+  color: #3B7E8D;
 }
 
 /* ---------- grid container  ---------- */
@@ -151,7 +151,7 @@ button {
 }
 
 button.button {
-  background-color: #6ecd6b;
+  background-color: #3B7E8D;;
   color: white;
   margin-bottom: 50px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
@@ -177,24 +177,18 @@ button.button-delete::after {
   margin-left: 10px;
 }
 
-button.button-fixed {
-  background-color: #6ecd6b;
-  color: white;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+.img-fixed {
   position: fixed;
   bottom: 13%;
-  left: 0;
-  right: 0;
-  text-align: center;
+  right: 10%;
   z-index: 11;
-  width: 80%;
-  max-width: 300px;
-  height: 50px;
-  font-size: 17px;
+  width: 80px;
+  height: 80px;
+  
 }
 
 button.button-logud {
-  background-color: #aec5ad;
+  background-color: #5b777e;;
   color: white;
   margin-bottom: 100px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
@@ -384,4 +378,5 @@ input.checkbox {
   width: 80%;
   display: block;
   margin: auto;
+  
 }
