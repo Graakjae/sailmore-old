@@ -37,7 +37,7 @@ export default function OvelserPage({ showLoader }) {
 
     return (
         <section className="OvelsePage">
-            <h1>Øvelser</h1>
+            <h1>Udforsk</h1>
             <SearchBar setValue={handleSearch} />
             <Filter handleFilters={filterOvelser}/>
             <section>

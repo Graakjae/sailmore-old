@@ -1,7 +1,7 @@
 import { Routes, Navigate, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import DineTogter from "./pages/DineTogter";
-import PlanPage from "./pages/PlanPage";
+import Togt from "./pages/Togt";
 import Loader from "./components/Loader";
 import { useState } from "react";
 import SignInPage from "./pages/SignInPage";
@@ -11,7 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Indbakke from "./pages/Indbakke"
 import FrontPage from "./pages/FrontPage";
 import Udforsk from "./pages/Udforsk";
-import NyPlanPage from "./pages/NyPlanPage";
+import NytTogt from "./pages/NytTogt";
 
 function App() {
   const [showLoader, setShowLoader] = useState(true); // default value of the loader is true (loader displayed)
@@ -36,11 +36,11 @@ function App() {
             <Nav />
             <Routes>
                 <Route path="/" element={<Udforsk showLoader={setShowLoader} />} />
-                <Route path="/dinetogter/plan/:id" element={<PlanPage showLoader={setShowLoader} />} />
+                <Route path="/dinetogter/plan/:id" element={<Togt showLoader={setShowLoader} />} />
                 <Route path="/dinetogter" element={<DineTogter showLoader={setShowLoader} />} />
                 <Route path="/profile" element={<ProfilePage showLoader={setShowLoader} />} />
                 <Route path="/indbakke" element={<Indbakke showLoader={setShowLoader} />} />
-                <Route path="/ny-plan" element={<NyPlanPage showLoader={setShowLoader} />} />
+                <Route path="/nyt-togt" element={<NytTogt showLoader={setShowLoader} />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </>

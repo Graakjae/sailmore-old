@@ -7,9 +7,6 @@ import imgPlaceholder from "../assets/img/img-placeholder.jpg";
 export default function ProfilePage({ showLoader }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const auth = getAuth();
@@ -26,9 +23,6 @@ export default function ProfilePage({ showLoader }) {
         if (userData) {
           
           setName(userData.name);
-          setAge(userData.age);
-          setWeight(userData.weight);
-          setHeight(userData.height);
           setImage(userData.image);
         }
       }
@@ -44,9 +38,6 @@ export default function ProfilePage({ showLoader }) {
 
     const userToUpdate = {
       name: name,
-      age: age,
-      weight: weight,
-      height: height,
       image: image,
     }; 
     const docRef = doc(usersRef, auth.currentUser.uid); 
@@ -91,36 +82,6 @@ export default function ProfilePage({ showLoader }) {
             onChange={(e) => setName(e.target.value)}
             name="name"
             placeholder="Skriv navn"
-          />
-        </label>
-        <label>
-          Alder
-          <input
-            type="text"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            name="age"
-            placeholder="Skriv alder"
-          />
-        </label>
-        <label>
-          Vægt i Kg
-          <input
-            type="text"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            name="weight"
-            placeholder="Skriv vægt"
-          />
-        </label>
-        <label>
-          Højde i cm
-          <input
-            type="text"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            name="Height"
-            placeholder="Skriv højde"
           />
         </label>
         <label>

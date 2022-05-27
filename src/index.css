@@ -148,6 +148,7 @@ button {
   margin: 3em auto 0;
   border-radius: 50px;
   font-family: "Lato", sans-serif;
+  margin-bottom: 50px;
 }
 
 button.button {
@@ -283,7 +284,7 @@ form .file-input {
   justify-content: center;
 }
 
-/* ---------- Øvelser/Ny plan  ---------- */
+/* ---------- Nyt togt  ---------- */
 
 .ovelser {
   margin: 1em auto;
@@ -313,14 +314,41 @@ form .file-input {
 }
 
 select{
-  width: 90%;
-  border-radius: 15px;
+  width: 100%;
+  border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-  height: 30px;
+  height: 40px;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 .pad{
   margin-left: 15px;
 }
+
+.icons {
+  height: 20px;
+  padding-left: 10px;
+}
+
+.icons2 {
+  height: 40px;
+  right: 10px;
+  margin-top: 15px;
+}
+
+.beskrivelse {
+  height: 200px;
+}
+
+/* ----------  togt  ---------- */
+.flexbox {
+  display: flex;
+  border-bottom: 1px solid grey;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+
 /* ---------- Filter  ---------- */
 
 .filter-container {
@@ -335,24 +363,6 @@ input.checkbox {
   background-color: black;
 }
 
-
-/* ---------- fremskridt  ---------- */
-
-.fremskridt{
-  padding-bottom: 100px;
-}
-
-.fremskridt img {
-  max-width: 300px;
-  padding-bottom: 40px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.fremskridt h3 {
-  text-align: center;
-}
 
 /* ---------- front page  ---------- */
 

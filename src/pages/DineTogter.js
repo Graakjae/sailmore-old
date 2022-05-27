@@ -26,7 +26,7 @@ export default function HomePage({ post, showLoader }) {
 
     
     function handleClick() {
-        navigate(`/ny-plan`);
+        navigate(`/nyt-togt`);
     }
 
     return (
