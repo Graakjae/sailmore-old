@@ -37,10 +37,12 @@ export default function UpdatePage({ showLoader }) {
         }
     }
 
-    function getDate(startDate) {
+    function getDate(startDate) { 
+        if (startDate) {
         const date = startDate.toDate();
         console.log(date);
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    }
     }
 
 
