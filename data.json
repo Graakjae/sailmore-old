@@ -1,0 +1,37 @@
+[{
+    "id": 0,
+    "aktiviteter": "Besøge seværdigheder"
+}, {
+    "id": 1,
+    "aktiviteter": "Bjergvandring"
+}, {
+    "id": 2,
+    "aktiviteter": "Dykke med flasker"
+}, {
+    "id": 3,
+    "aktiviteter": "Dykke med snorkel"
+}, {
+    "id": 4,
+    "aktiviteter": "Fiske med fiskestang"
+}, {
+    "id": 5,
+    "aktiviteter": "Historisk interesseret"
+}, {
+    "id": 6,
+    "aktiviteter": "Kulturelt interesseret"
+}, {
+    "id": 7,
+    "aktiviteter": "Lære at dykke med flasker"
+}, {
+    "id": 8,
+    "aktiviteter": "Lære at navigere"
+}, {
+    "id": 9,
+    "aktiviteter": "Lære at sejle"
+}, {
+    "id": 10,
+    "aktiviteter": "Undervandsjagt med harpun"
+}, {
+    "id": 11,
+    "aktiviteter": "Vandreture"
+}]

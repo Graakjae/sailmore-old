@@ -13,11 +13,19 @@ import location from "../assets/img/locationicon.png";
 import boat from "../assets/img/boaticon.png";
 import calender from "../assets/img/calendericon.png";
 
+import React from 'react';
+
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+
+
+
+
 export default function NewFavList({ showLoader }) {
-    
     const [posts, setPosts] = useState([]);
     const [datas, setDatas] = useState([]);
     const [datas2, setDatas2] = useState([]);
+    const [selectedAktiviteter, setSelectedAktiviteter] = useState({});
     
     const [name, setName] = useState("");
     const [beskrivelse, setBeskrivelse] = useState("");
@@ -29,11 +37,61 @@ export default function NewFavList({ showLoader }) {
 
     const [startDate, setStartDate] = useState(new Date());
 
-
-
     const navigate = useNavigate();
 
-    
+    const animatedComponents = makeAnimated();
+
+    const alleAktiviteter = [
+        {
+          value: 0,
+          label: "Besøge seværdigheder"
+        },
+        {
+          value: 1,
+          label: "Bjergvandring"
+        },
+        {
+          value: 2,
+          label: "Dykke med flasker"
+        },
+        {
+          value: 3,
+          label: "Dykke med snorkel"
+        },
+        {
+          value: 4,
+          label: "Fiske med fiskestang"
+        },
+        {
+          value: 5,
+          label: "Historisk interesseret"
+        },
+        {
+          value: 6,
+          label: "Kulturelt interesseret"
+        },
+        {
+          value: 7,
+          label: "Lære at dykke med flasker"
+        },
+        {
+          value: 8,
+          label: "Lære at navigere"
+        },
+        {
+          value: 9,
+          label: "Lære at sejle"
+        },
+        {
+          value: 10,
+          label: "Undervandsjagt med harpun"
+        },
+        {
+          value: 11,
+          label: "Vandreture"
+        }
+      ];
+
     useEffect(() => {
         async function getPosts() {
             const url = "https://api.jsonbin.io/b/628ca823402a5b38020b1aff";
@@ -83,14 +141,13 @@ export default function NewFavList({ showLoader }) {
             sejlområde: sejlområde,
             erfaring: erfaring,
             aktiviteter: aktiviteter,
-            startDate: startDate
+            startDate: startDate,
+            selectedAktiviteter: selectedAktiviteter    
         };
 
         await addDoc(favsRef, newFavList);
         navigate("/dinetogter");
     }
-
-    
 
     function handleImageChange(event) {
         const file = event.target.files[0];
@@ -108,12 +165,38 @@ export default function NewFavList({ showLoader }) {
         }
     }
 
+    function handleAddPost() {
+        const post = posts.find(post => post.value == selectedAktiviteter);
+        console.log(post);
+        
+        setSelectedAktiviteter(prevSelectedAktiviteter => [...prevSelectedAktiviteter, post]);
+        console.log(selectedAktiviteter);
+    }
+    
+    
+
     return (
         <section className="page">
             <h1>Ny sejlads</h1>
             <form onSubmit={handleSubmit}>
+
+<label>
+            <Select
+                        closeMenuOnSelect={false}
+                        components={animatedComponents}
+                        isMulti
+                        name="colors"
+                        options={alleAktiviteter}
+                        className="basic-multi-select"
+                        classNamePrefix="Aktiviteter"
+                        onClick={handleAddPost}
+                        //onChange={e => setSelectedAktiviteter(e.target.value)}
+                        
+                    />
+                    </label>
+                    
+
             <label>
-                    Image
                     <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
                     <img className="image-preview" src={image} alt="Choose" onError={e => (e.target.src = imgPlaceholder)} />
                 </label>
@@ -130,7 +213,7 @@ export default function NewFavList({ showLoader }) {
                 
                    <label>
                     
-                <DatePicker locale={da} dateFormat="dd/MM/yyyy" selected={startDate} onChange={(e:Date) => setStartDate(e)} />
+                <DatePicker locale={da} dateFormat="dd/MM/yyyy" selected={startDate} onChange={(e) => setStartDate(e)} />
                 </label> 
                     
                     <label >
@@ -172,9 +255,10 @@ export default function NewFavList({ showLoader }) {
                             ))}
                         </select>
                     </label>
-
                     
-
+                    
+                    
+                    
                 <button type="submit">Opret togt</button>
                 <p className="text-error">{errorMessage}</p>
             </form>

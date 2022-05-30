@@ -36,20 +36,27 @@ export default function UpdatePage({ showLoader }) {
             navigate("/dinetogter");
         }
     }
-    console.log(post);
+
+    function getDate(startDate) {
+        const date = startDate.toDate();
+        console.log(date);
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    }
+
+
     return (
         <section className="page">
            <div>
-            <img src={post.image} alt={post.title} className="captain" />
-            <h1>{post.name}</h1>
-            <div className="flexbox">
-                <p>{post.sejlområde}</p>
-                <img src={location} alt="location icon" className="icons2"/>
+                <img src={post.image} alt={post.title} className="captain" />
+                <h1>{post.name}</h1>
+                <div className="flexbox">
+                    <p>{post.beskrivelse}</p>
+                    <img src={location} alt="location icon" className="icons2"/>
+                </div>
             </div>
-            </div>
             <div className="flexbox">
-                <p>{post.startDate}</p>
-                <img src={calender} alt="location icon" className="icons2"/>
+                <p>{getDate(post.startDate)}</p>
+                <img src={calender} alt="calender icon" className="icons2"/>
             </div>
             <div className="flexbox">
                 <p>{post.sejlområde}</p>
@@ -58,7 +65,7 @@ export default function UpdatePage({ showLoader }) {
                 <p>Gasternes sejlerfaring</p>
             <div className="flexbox">
                 <p>{post.erfaring}</p>
-                <img src={rudder} alt="location icon" className="icons2"/>
+                <img src={rudder} alt="rudder icon" className="icons2"/>
             </div>
                 <p>Aktiviteter på turen</p>
             <div className="flexbox">
