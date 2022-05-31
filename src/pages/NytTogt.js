@@ -13,6 +13,9 @@ import location from "../assets/img/locationicon.png";
 import boat from "../assets/img/boaticon.png";
 import calender from "../assets/img/calendericon.png";
 import coins from "../assets/img/coinsicon.png";
+import arrow from "../assets/img/arrow.png";
+import logo from "../assets/img/logo.png";
+
 
 import React from 'react';
 
@@ -168,13 +171,12 @@ export default function NewFavList({ showLoader }) {
 
     return (
         <section className="page">
-            <h1>Ny sejlads</h1>
+            <button className="buttonback" onClick={() => navigate(-1)}>
+                <img src={arrow} alt="arrow" className="arrow"/>
+            </button> 
+                <img src={logo} alt="logo" className="logo"/>
+        
             <form onSubmit={handleSubmit}>
-                    
-            <label>
-                    <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
-                    <img className="image-preview" src={image} alt="Choose" onError={e => (e.target.src = imgPlaceholder)} />
-                </label>
             
                 <label>
                     Navngiv din sejlads
@@ -189,7 +191,7 @@ export default function NewFavList({ showLoader }) {
                 <label>
                     Pris per dag
                     <img src={coins} alt="coins icon" className="icons"/>
-                    <input type="number" onChange={e => setName(e.target.value)} />
+                    <input type="number" onChange={e => setPris(e.target.value)} />
                 </label>
 
                 <label className="flexbox2">  
@@ -203,11 +205,8 @@ export default function NewFavList({ showLoader }) {
                         <img src={calender} alt="calender icon" className="icons"/>
                         <DatePicker locale={da} dateFormat="dd/MM/yyyy" className="dates" selected={endDate} onChange={(e) => setEndDate(e)} />
                     </div>
-                </label> 
-
-                
-                    
-                    <label >
+                </label>
+                <label >
                         Vælg sejlområde
                         <img src={location} alt="location icon" className="icons"/>
                         <select onChange={e => setSejlområde(e.target.value)}>
@@ -219,13 +218,12 @@ export default function NewFavList({ showLoader }) {
                             ))}
                         </select>
                         
-                    </label>
-                    <label>
+                </label>
+                <label>
                         Aktiviteter
                         <img src={boat} alt="boat icon" className="icons"/>
 
                         <Select
-                            closeMenuOnSelect={false}
                             components={animatedComponents}
                             isMulti
                             name="colors"
@@ -234,9 +232,10 @@ export default function NewFavList({ showLoader }) {
                             classNamePrefix="Aktiviteter"
                             onClick={handleAddPost}
                             onChange={handleActivitiesChange}
+                            closeMenuOnSelect={false}
                         />
-                    </label>
-                    <label>
+                </label>
+                <label>
                         Vælg erfaring
                         <img src={rudder} alt="rudder icon" className="icons"/>
                         <select onChange={e => setErfaring(e.target.value)}>
@@ -247,10 +246,13 @@ export default function NewFavList({ showLoader }) {
                                 </option>
                             ))}
                         </select>
-                    </label>
-
-                    
-                    
+                </label>
+                <label>
+                    Vælg et billede
+                    <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+                    <img className="image-preview" src={image} alt="Choose" onError={e => (e.target.src = imgPlaceholder)} />
+                </label>
+                
                 <button type="submit">Opret togt</button>
                 <p className="text-error">{errorMessage}</p>
             </form>

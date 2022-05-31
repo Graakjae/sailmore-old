@@ -6,11 +6,13 @@ import logo from "../assets/img/logo.png";
 import onboarding from "../assets/img/onboarding.png";
 import { usersRef } from "../firebase-config";
 import { doc, setDoc } from "@firebase/firestore";
+import imgPlaceholder from "../assets/img/img-placeholder.jpg";
 
 export default function SignUpPage({ showLoader }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [name, setName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [image, setImage] = useState("");
   const auth = getAuth();
 
   useEffect(() => {
@@ -42,10 +44,27 @@ export default function SignUpPage({ showLoader }) {
     const userToUpdate = {
       name: name, 
       lastName: lastName, 
+      image: image
     };
     const docRef = doc(usersRef, auth.currentUser.uid);
     await setDoc(docRef, userToUpdate);
   }
+
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    if (file.size < 500000) {
+        // image file size must be below 0,5MB
+        const reader = new FileReader();
+        reader.onload = event => {
+            setImage(event.target.result);
+        };
+        reader.readAsDataURL(file);
+        setErrorMessage(""); // reset errorMessage state
+    } else {
+        // if not below 0.5MB display an error message using the errorMessage state
+        setErrorMessage("The image file is too big!");
+    }
+}
 
   return (
     <section className="page">
@@ -86,6 +105,11 @@ export default function SignUpPage({ showLoader }) {
         />
         </label>
         <p className="text-error">{errorMessage}</p>
+        Vælg et profilbillede
+        <label>
+            <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+            <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = imgPlaceholder)} />
+        </label>
         <button>Næste</button>
       </form>
       <p className="text-center">

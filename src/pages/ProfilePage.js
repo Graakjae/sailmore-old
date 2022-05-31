@@ -3,9 +3,11 @@ import { getAuth, signOut } from "firebase/auth";
 import { usersRef } from "../firebase-config";
 import { doc, getDoc, setDoc } from "@firebase/firestore";
 import imgPlaceholder from "../assets/img/img-placeholder.jpg";
+import logo from "../assets/img/logo.png";
 
 export default function ProfilePage({ showLoader }) {
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -23,6 +25,7 @@ export default function ProfilePage({ showLoader }) {
         if (userData) {
           
           setName(userData.name);
+          setLastName(userData.lastName);
           setImage(userData.image);
         }
       }
@@ -38,6 +41,7 @@ export default function ProfilePage({ showLoader }) {
 
     const userToUpdate = {
       name: name,
+      lastName: lastName,
       image: image,
     }; 
     const docRef = doc(usersRef, auth.currentUser.uid); 
@@ -67,37 +71,49 @@ export default function ProfilePage({ showLoader }) {
 
   return (
     <section className="page">
-      <h1>Profil</h1>
+        <img src={logo} alt="logo" className="logo"/>
+      
       <form className="profilePage" onSubmit={handleSubmit}>
-      <label>
-                    Image
-                    <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
-                    <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = imgPlaceholder)} />
-                </label>
+
         <label>
-          Navn
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            name="name"
-            placeholder="Skriv navn"
-          />
-        </label>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            placeholder="Skriv email"
-            disabled
-          />
+            <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+            <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = imgPlaceholder)} />
         </label>
 
-        <p className="text-error">{errorMessage}</p>
-        <button>Gem</button>
+        <label>
+          Navn
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              name="name"
+              placeholder="Skriv navn"
+            />
+        </label>
+        <label>
+          Efternavn
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              name="name"
+              placeholder="Skriv navn"
+            />
+        </label>
+        <label>
+            Email
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              placeholder="Skriv email"
+              disabled
+            />
+        </label>
+
+          <p className="text-error">{errorMessage}</p>
+          <button>Gem</button>
       </form>
       <button className="button-logud" onClick={handleSignOut}>
         Logud

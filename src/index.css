@@ -13,8 +13,8 @@ h1 {
   font-size: 2em;
   font-weight: 700;
   letter-spacing: 0.1px;
-  margin-block-end: 0em;
-  margin-block-start: 0em;
+  margin-block-start: 0.7em;
+  text-align: center;
 }
 
 h2 {
@@ -99,24 +99,17 @@ nav a.active {
   gap: 1.2em;
 }
 
-.grid-container > article {
+article {
   margin: auto;
   display: block;
-  width: 90%;
+  width: 100%;
   max-width: 350px;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  padding: 0;
   background-color: var(--white);
   transition: 0.5s;
   cursor: pointer;
   border-radius: 15px;
 }
 
-.grid-container > article img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
 
 /* ---------- form  ---------- */
 
@@ -193,7 +186,7 @@ button.button-delete::after {
   border-radius: 50px;
   box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.25);
   background-color: white;
-  margin-top: 20px;
+  margin-top: 10px;
   position: absolute;
 }
 
@@ -306,30 +299,12 @@ form .file-input {
   justify-content: center;
 }
 
+/* ---------- Udforsk  ---------- */
+.userimg {
+  width: 100%;
+}
 /* ---------- Nyt togt  ---------- */
 
-.ovelser {
-  margin: 1em auto;
-  width: 350px;
-  box-sizing: border-box;
-  display: block;
-  border: solid 1px #c1c1c1;
-  border-radius: 15px;
-  padding-left: 10px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-}
-
-.ovelser2 {
-  margin: 1em auto;
-  width: 350px;
-  box-sizing: border-box;
-  display: block;
-  border: solid 1px #c1c1c1;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-  align-items: center;
-}
 
 .right{
   float: right;
@@ -339,8 +314,16 @@ select{
   width: 100%;
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-  height: 40px;
+  height: 45px;
   font-size: 15px;
+  margin-bottom: 20px;
+  border: solid 1px #c1c1c1;
+  background-color: white;
+}
+
+.basic-multi-select {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
   margin-bottom: 20px;
 }
 .pad{
@@ -396,12 +379,15 @@ select{
 }
 
 .togtimg {
-  width: 100%;
+  max-width: 100%;
   border-radius: 12px;
+  height: 100%;
 }
 
 .togth1 {
   font-size: 1.5em;
+  text-align: left;
+  margin-block-start: 0em;
 }
 
 .bordertop {
@@ -414,7 +400,7 @@ select{
   margin-top: 4px;
   margin-left: -3px;
 }
-/* ---------- Filter  ---------- */
+/* ---------- Filter / Searchbar ---------- */
 
 .filter-container {
   display: grid;
@@ -426,6 +412,22 @@ select{
 input.checkbox {
   box-shadow: none;
   background-color: black;
+}
+
+.searchbar {
+  border-radius: 50px;
+  width: 80%;
+  float: left;
+}
+
+.buttonfilter {
+  float: right;
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.25);
+  background-color: white;
+  margin-top: 0px;
 }
 
 

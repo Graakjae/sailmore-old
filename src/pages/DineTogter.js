@@ -4,9 +4,10 @@ import { favsRef } from "../firebase-config";
 import PostCard from "../components/PostCard";
 import { useNavigate } from "react-router-dom";
 import knap from "../assets/img/nyTogtKnap.png";
+import logo from "../assets/img/logo.png";
 
 
-export default function HomePage({ post, showLoader }) {
+export default function HomePage({ showLoader }) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -31,12 +32,12 @@ export default function HomePage({ post, showLoader }) {
 
     return (
         <section className="page">
-           
+            <img src={logo} alt="logo" className="logo"/>
                 <img src={knap} alt="nyt togt knap" className="img-fixed" onClick={handleClick}/>
            
             
             <section className="grid-container">
-                <h1>Dine togter</h1>
+                
                 {posts.map(post => (
                     <PostCard post={post} key={post.id} />
                 ))}

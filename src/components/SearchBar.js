@@ -1,3 +1,6 @@
+import filter from "../assets/img/filter.png";
+
+
 export default function SearchBar({ setValue }) {
 
   function handleSearch(event) {
@@ -6,7 +9,10 @@ export default function SearchBar({ setValue }) {
 
   return (
     <article>
-      <input type="search" placeholder="Search" onChange={handleSearch} />
+      <button className="buttonfilter">
+        <img src={filter} alt="filter" className="arrow"/>
+      </button>
+      <input type="search" placeholder="Search" onChange={handleSearch} className="searchbar"/>
     </article>
   );
 }
