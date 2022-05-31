@@ -12,8 +12,10 @@ import rudder from "../assets/img/rudder.png";
 import location from "../assets/img/locationicon.png";
 import boat from "../assets/img/boaticon.png";
 import calender from "../assets/img/calendericon.png";
+import coins from "../assets/img/coinsicon.png";
 
 import React from 'react';
+
 
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -24,18 +26,18 @@ import makeAnimated from 'react-select/animated';
 export default function NewFavList({ showLoader }) {
     const [posts, setPosts] = useState([]);
     const [datas, setDatas] = useState([]);
-    const [datas2, setDatas2] = useState([]);
-    const [selectedAktiviteter, setSelectedAktiviteter] = useState({});
+    const [selectedAktiviteter, setSelectedAktiviteter] = useState([]);
     
     const [name, setName] = useState("");
     const [beskrivelse, setBeskrivelse] = useState("");
     const [sejlområde, setSejlområde] = useState({});
     const [erfaring, setErfaring] = useState({});
-    const [aktiviteter, setAktiviteter] = useState({});
+    const [pris, setPris] = useState("");
     const [image, setImage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
     const navigate = useNavigate();
 
@@ -117,19 +119,6 @@ export default function NewFavList({ showLoader }) {
         }
         getData();
     }, [showLoader]);
-
-    useEffect(() => {
-        async function getData2() {
-            const url2 = "https://api.jsonbin.io/b/628f9ee4402a5b38020ecf6a";
-            const response2 = await fetch(url2);
-            const data2 = await response2.json();
-            setDatas2(data2);
-            console.log(data2);
-            showLoader(false);
-            
-        }
-        getData2();
-    }, [showLoader]);
     
     async function handleSubmit(event) {
         event.preventDefault();
@@ -140,8 +129,9 @@ export default function NewFavList({ showLoader }) {
             image: image,
             sejlområde: sejlområde,
             erfaring: erfaring,
-            aktiviteter: aktiviteter,
+            pris: pris,
             startDate: startDate,
+            endDate: endDate,
             selectedAktiviteter: selectedAktiviteter    
         };
 
@@ -151,7 +141,7 @@ export default function NewFavList({ showLoader }) {
 
     function handleImageChange(event) {
         const file = event.target.files[0];
-        if (file.size < 500000) {
+        
             // image file size must be below 0,5MB
             const reader = new FileReader();
             reader.onload = event => {
@@ -159,10 +149,7 @@ export default function NewFavList({ showLoader }) {
             };
             reader.readAsDataURL(file);
             setErrorMessage(""); // reset errorMessage state
-        } else {
-            // if not below 0.5MB display an error message using the errorMessage state
-            setErrorMessage("The image file is too big!");
-        }
+        
     }
 
     function handleAddPost() {
@@ -173,29 +160,17 @@ export default function NewFavList({ showLoader }) {
         console.log(selectedAktiviteter);
     }
     
-    
+    function handleActivitiesChange(selectedOptions) {
+        console.log(`Option selected:`, selectedOptions);
+        setSelectedAktiviteter(selectedOptions);
+    }
+
 
     return (
         <section className="page">
             <h1>Ny sejlads</h1>
             <form onSubmit={handleSubmit}>
-
-<label>
-            <Select
-                        closeMenuOnSelect={false}
-                        components={animatedComponents}
-                        isMulti
-                        name="colors"
-                        options={alleAktiviteter}
-                        className="basic-multi-select"
-                        classNamePrefix="Aktiviteter"
-                        onClick={handleAddPost}
-                        //onChange={e => setSelectedAktiviteter(e.target.value)}
-                        
-                    />
-                    </label>
                     
-
             <label>
                     <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
                     <img className="image-preview" src={image} alt="Choose" onError={e => (e.target.src = imgPlaceholder)} />
@@ -203,18 +178,34 @@ export default function NewFavList({ showLoader }) {
             
                 <label>
                     Navngiv din sejlads
-                    <input type="text" placeholder="Navngiv plan" onChange={e => setName(e.target.value)} />
+                    <input type="text" onChange={e => setName(e.target.value)} />
                 </label>
 
                 <label>
                     Beskrivelse
-                    <input className="beskrivelse" type="text" placeholder="Beskrivelse" onChange={e => setBeskrivelse(e.target.value)} />
+                    <textarea className="beskrivelse" type="text" onChange={e => setBeskrivelse(e.target.value)} />
                 </label>
                 
-                   <label>
-                    
-                <DatePicker locale={da} dateFormat="dd/MM/yyyy" selected={startDate} onChange={(e) => setStartDate(e)} />
+                <label>
+                    Pris per dag
+                    <img src={coins} alt="coins icon" className="icons"/>
+                    <input type="number" onChange={e => setName(e.target.value)} />
+                </label>
+
+                <label className="flexbox2">  
+                    <div>
+                        Startdato
+                        <img src={calender} alt="calender icon" className="icons"/>
+                        <DatePicker locale={da} dateFormat="dd/MM/yyyy" className="dates" selected={startDate} onChange={(e) => setStartDate(e)} />
+                    </div>
+                    <div>
+                        Startdato
+                        <img src={calender} alt="calender icon" className="icons"/>
+                        <DatePicker locale={da} dateFormat="dd/MM/yyyy" className="dates" selected={endDate} onChange={(e) => setEndDate(e)} />
+                    </div>
                 </label> 
+
+                
                     
                     <label >
                         Vælg sejlområde
@@ -229,7 +220,22 @@ export default function NewFavList({ showLoader }) {
                         </select>
                         
                     </label>
+                    <label>
+                        Aktiviteter
+                        <img src={boat} alt="boat icon" className="icons"/>
 
+                        <Select
+                            closeMenuOnSelect={false}
+                            components={animatedComponents}
+                            isMulti
+                            name="colors"
+                            options={alleAktiviteter}
+                            className="basic-multi-select"
+                            classNamePrefix="Aktiviteter"
+                            onClick={handleAddPost}
+                            onChange={handleActivitiesChange}
+                        />
+                    </label>
                     <label>
                         Vælg erfaring
                         <img src={rudder} alt="rudder icon" className="icons"/>
@@ -243,20 +249,6 @@ export default function NewFavList({ showLoader }) {
                         </select>
                     </label>
 
-                    <label>
-                        Vælg aktiviteter
-                        <img src={boat} alt="boat icon" className="icons"/>
-                        <select onChange={e => setAktiviteter(e.target.value)}>
-                            <option>Aktiviteter</option>
-                            {datas2.map(data2 => (
-                                <option value={data2.aktiviteter} key={data2.aktiviteter}>
-                                    {data2.aktiviteter}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                    
-                    
                     
                     
                 <button type="submit">Opret togt</button>

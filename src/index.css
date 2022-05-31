@@ -2,18 +2,19 @@ body {
   background-color: white;
   padding: 0;
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Rajdhani", sans-serif;
 }
 
 code {
-  font-family: "Lato", sans-serif;
+  font-family: "Rajdhani", sans-serif;
 }
 
 h1 {
   font-size: 2em;
   font-weight: 700;
   letter-spacing: 0.1px;
-  text-align: center;
+  margin-block-end: 0em;
+  margin-block-start: 0em;
 }
 
 h2 {
@@ -24,10 +25,13 @@ h2 {
 h3 {
   font-weight: 500;
   letter-spacing: 0.1px;
+  font-size: 1.17em;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 
 .page {
-  padding: 1em;
+  padding: 1.5em;
   padding-bottom: 4em;
 }
 
@@ -40,7 +44,10 @@ h3 {
   margin-top: 200px;
 }
 
-
+p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
 /* ---------- animations ---------- */
 
 @keyframes spin {
@@ -72,11 +79,12 @@ nav a {
   padding: 20px 16px;
   text-decoration: none;
   letter-spacing: 0.1em;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 nav img {
-  height: 20px;
+  height: 25px;
 }
 
 
@@ -178,6 +186,17 @@ button.button-delete::after {
   margin-left: 10px;
 }
 
+.buttonback {
+  float: left;
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.25);
+  background-color: white;
+  margin-top: 20px;
+  position: absolute;
+}
+
 .img-fixed {
   position: fixed;
   bottom: 13%;
@@ -197,7 +216,7 @@ button.button-logud {
 
 
 input {
-  margin: 1em auto;
+  margin: 0em auto;
   width: 100%;
   max-width: 350px;
   padding: 1em;
@@ -206,6 +225,7 @@ input {
   border: solid 1px #c1c1c1;
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
 }
 
 .image-preview {
@@ -213,11 +233,12 @@ input {
   max-width: 350px;
   height: 200px;
   object-fit: cover;
-  margin: 1em auto;
+  margin: 20px auto;
   display: block;
   cursor: pointer;
   border-radius: 20px;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+  
 }
 
 form .file-input {
@@ -238,9 +259,9 @@ form .file-input {
 }
 
 .spinner {
-  border: 5px solid #d8e0d8;
+  border: 5px solid #c6eaf3;
   border-radius: 50%;
-  border-top: 5px solid #6ecd6b;
+  border-top: 5px solid #3B7E8D;
   width: 50px;
   height: 50px;
   -webkit-animation: spin 1s linear infinite;
@@ -268,7 +289,8 @@ form .file-input {
   margin: auto;
   display: block;
   align-items: center;
-  width: 50%;
+  width: 40%;  
+  margin-bottom: 30px;
 }
 
 /* ---------- Profile  ---------- */
@@ -326,29 +348,72 @@ select{
 }
 
 .icons {
-  height: 20px;
+  height: 18px;
   padding-left: 10px;
 }
 
 .icons2 {
   height: 40px;
   right: 10px;
-  margin-top: 15px;
+  margin-top: 5px;
+  
 }
 
 .beskrivelse {
-  height: 200px;
+  height: 150px;
+  width: 98%;
+  margin: auto;
+  display: block;
+  border: solid 1px #c1c1c1;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
+}
+
+.dates {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 /* ----------  togt  ---------- */
 .flexbox {
   display: flex;
-  border-bottom: 1px solid grey;
-  padding: 10px;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-top: 20px;
+  padding-bottom: 20px;
   justify-content: space-between;
 }
 
+.flexbox2 {
+  display: flex;
+  justify-content:space-between;
+}
 
+.flexbox3 {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.togtimg {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.togth1 {
+  font-size: 1.5em;
+}
+
+.bordertop {
+  border-top: 1px solid rgb(200, 200, 200);
+}
+
+.arrow{
+  width: 25px;
+  justify-content: center;
+  margin-top: 4px;
+  margin-left: -3px;
+}
 /* ---------- Filter  ---------- */
 
 .filter-container {
