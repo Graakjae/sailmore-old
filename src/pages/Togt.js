@@ -97,7 +97,7 @@ export default function Togt({ showLoader }) {
             <div className="flexbox">
                 <div>
                 <h3>Aktiviteter på turen</h3>
-                 {post?.selectedAktiviteter.map(aktivitet => (
+                 {post?.selectedAktiviteter?.map(aktivitet => (
                     <p>{aktivitet.label}</p>
                 ))} 
                 </div>

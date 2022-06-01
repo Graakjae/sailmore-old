@@ -4,6 +4,7 @@ import logo from "../assets/img/logo.png";
 import { onSnapshot } from "@firebase/firestore";
 import { usersRef } from "../firebase-config";
 import UserAvatar from "../components/UserAvatar";
+import imgPlaceholder from "../assets/img/img-placeholder.jpg";
 
 
 export default function OvelserPage({ showLoader }) {
@@ -14,7 +15,7 @@ export default function OvelserPage({ showLoader }) {
 
     useEffect(() => {
         const unsubscribe = onSnapshot(usersRef, data => {
-            const userData = data.docs.map(doc => {
+            const userData = data.docs?.map(doc => {
                 
                 return { ...doc.data(), id: doc.id }; 
             });
@@ -36,11 +37,13 @@ export default function OvelserPage({ showLoader }) {
             <img src={logo} alt="logo" className="logo"/>
             
             <SearchBar setValue={handleSearch} /> 
-            
             {users.map(user => (
-                    <UserAvatar post={user} key={user.id} />
-                    
-                ))}
+                            <div>
+                                <p> {user.name}</p>
+                                <img src={user?.image} alt={user?.title} className="togtimg" onError={e => (e.target.src = imgPlaceholder)}/>
+                            </div>
+                            ))}
+            
             <img src={users.image} alt={users.id} className="userimg" />
             <h2>{users.name}</h2>
         </section>
