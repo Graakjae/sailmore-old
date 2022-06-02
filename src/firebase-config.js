@@ -14,6 +14,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 export const usersRef = collection(db, "users"); 
+export const gasterRef = collection(db, "gaster"); 
 export const postsRef = collection(db, "posts"); 
 export const favsRef = collection(db, "favorites");
 

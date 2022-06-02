@@ -6,8 +6,9 @@ import { favsRef } from "../firebase-config";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import da from 'date-fns/locale/da';
+import Select from 'react-select';
 
-import imgPlaceholder from "../assets/img/img-placeholder.jpg";
+import imgPlaceholder from "../assets/img/boat-placeholder.png";
 import rudder from "../assets/img/rudder.png";
 import location from "../assets/img/locationicon.png";
 import boat from "../assets/img/boaticon.png";
@@ -15,15 +16,6 @@ import calender from "../assets/img/calendericon.png";
 import coins from "../assets/img/coinsicon.png";
 import arrow from "../assets/img/arrow.png";
 import logo from "../assets/img/logo.png";
-
-
-import React from 'react';
-
-
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-
-
 
 
 export default function NewFavList({ showLoader }) {
@@ -43,8 +35,6 @@ export default function NewFavList({ showLoader }) {
     const [endDate, setEndDate] = useState(new Date());
 
     const navigate = useNavigate();
-
-    const animatedComponents = makeAnimated();
 
     const alleAktiviteter = [
         {
@@ -155,13 +145,6 @@ export default function NewFavList({ showLoader }) {
         
     }
 
-    function handleAddPost() {
-        const post = posts.find(post => post.value == selectedAktiviteter);
-        console.log(post);
-        
-        setSelectedAktiviteter(prevSelectedAktiviteter => [...prevSelectedAktiviteter, post]);
-        console.log(selectedAktiviteter);
-    }
     
     function handleActivitiesChange(selectedOptions) {
         console.log(`Option selected:`, selectedOptions);
@@ -201,7 +184,7 @@ export default function NewFavList({ showLoader }) {
                         <DatePicker locale={da} dateFormat="dd/MM/yyyy" className="dates" selected={startDate} onChange={(e) => setStartDate(e)} />
                     </div>
                     <div>
-                        Startdato
+                        Slutdato
                         <img src={calender} alt="calender icon" className="icons"/>
                         <DatePicker locale={da} dateFormat="dd/MM/yyyy" className="dates" selected={endDate} onChange={(e) => setEndDate(e)} />
                     </div>
@@ -224,13 +207,11 @@ export default function NewFavList({ showLoader }) {
                         <img src={boat} alt="boat icon" className="icons"/>
 
                         <Select
-                            components={animatedComponents}
                             isMulti
                             name="colors"
                             options={alleAktiviteter}
                             className="basic-multi-select"
                             classNamePrefix="Aktiviteter"
-                            onClick={handleAddPost}
                             onChange={handleActivitiesChange}
                             closeMenuOnSelect={false}
                         />

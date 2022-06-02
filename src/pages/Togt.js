@@ -79,7 +79,7 @@ export default function Togt({ showLoader }) {
                 <img src={calender} alt="calender icon" className="icons"/>
             </div>
             <div className="flexbox3">
-                <p>{post?.pris}</p>
+                <p>{post?.pris} kr / dag</p>
                 <img src={coins} alt="coins icon" className="icons"/>
             </div>
             
@@ -104,7 +104,9 @@ export default function Togt({ showLoader }) {
                 <img src={boat} alt="location icon" className="icons2"/>
             </div>
             
-            
+            <button className="button">
+                Opdater oplysninger
+            </button>
             
             <button className="button-delete" onClick={deletePost}>
                 Slet togt

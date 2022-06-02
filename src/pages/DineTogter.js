@@ -7,7 +7,7 @@ import knap from "../assets/img/nyTogtKnap.png";
 import logo from "../assets/img/logo.png";
 
 
-export default function HomePage({ showLoader }) {
+export default function DineTogter({ showLoader }) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {

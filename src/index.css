@@ -23,7 +23,7 @@ h2 {
 }
 
 h3 {
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.1px;
   font-size: 1.17em;
   margin-block-start: 0em;
@@ -70,6 +70,8 @@ nav {
   right: 0;
   text-align: center;
   z-index: 10;
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.25);
+
 }
 
 nav a {
@@ -127,7 +129,6 @@ form button {
 
 form button a {
   text-decoration: none;
-  font-family: "Lato", sans-serif;
   color: white;
 }
 
@@ -136,41 +137,34 @@ form button a {
 
 button {
   font-weight: 300;
+  height: 40px;
   text-align: center;
-  cursor: pointer;
   border: none;
   color: white;
   background-color: #3B7E8D;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.5em 1em;
+  text-decoration: none;
+  padding: 0.5em;
   font-size: 0.8em;
   display: block;
   margin: 3em auto 0;
   border-radius: 50px;
-  font-family: "Lato", sans-serif;
   margin-bottom: 50px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 }
 
 button.button {
   background-color: #3B7E8D;;
   color: white;
   margin-bottom: 50px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-}
-
-button.button::after {
-  content: "\002B";
-  font-size: 1rem;
-  margin-left: 20px;
+  
 }
 
 button.button-delete {
   background-color: #9c5452;
+  height: 30px;
   content: "\2212";
   color: white;
-  margin-bottom: 50px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 }
 
 button.button-delete::after {
@@ -201,13 +195,20 @@ button.button-delete::after {
 }
 
 button.button-logud {
-  background-color: #5b777e;;
-  color: white;
+  background-color: #ffffff;;
+  color: rgb(255, 0, 0);
   margin-bottom: 100px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  width: 80px;
+  font-weight: 400;
 }
 
+.noDec{
+  color: white;
+  text-decoration: none;
+}
 
+/* ---------- input styling ---------- */
 input {
   margin: 0em auto;
   width: 100%;
@@ -302,6 +303,18 @@ form .file-input {
 /* ---------- Udforsk  ---------- */
 .userimg {
   width: 100%;
+  
+}
+
+.gasth1 {
+  font-size: 1.5em;
+  text-align: left;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.udforskPage{
+  margin-bottom: 30px;
 }
 /* ---------- Nyt togt  ---------- */
 
@@ -379,7 +392,8 @@ select{
 }
 
 .togtimg {
-  max-width: 100%;
+  width: 100%;
+  height: 200px;
   border-radius: 12px;
   height: 100%;
 }
@@ -388,10 +402,12 @@ select{
   font-size: 1.5em;
   text-align: left;
   margin-block-start: 0em;
+  margin-block-end: 0.1em;
 }
 
 .bordertop {
   border-top: 1px solid rgb(200, 200, 200);
+  margin-top: 15px;
 }
 
 .arrow{
@@ -418,6 +434,7 @@ input.checkbox {
   border-radius: 50px;
   width: 80%;
   float: left;
+  border: solid 1px #c1c1c1;
 }
 
 .buttonfilter {
@@ -428,8 +445,15 @@ input.checkbox {
   box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.25);
   background-color: white;
   margin-top: 0px;
+  border: solid 1px #c1c1c1;
 }
 
+.filter{
+  width: 20px;
+  justify-content: center;
+  margin-top: 4px;
+  margin-left: -1px;
+}
 
 /* ---------- front page  ---------- */
 
@@ -439,7 +463,8 @@ input.checkbox {
 }
 
 .square50 {
-  width: 47%;
+  width: 45%;
+  
 }
 
 .square { 
@@ -448,6 +473,7 @@ input.checkbox {
   width: 100%;
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
+  margin-top: 20px;
 }
 
 .captain {
@@ -458,3 +484,6 @@ input.checkbox {
   
 }
 
+.indbakke{
+  width: 100%;
+}

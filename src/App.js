@@ -36,7 +36,7 @@ function App() {
             <Nav />
             <Routes>
                 <Route path="/" element={<Udforsk showLoader={setShowLoader} />} />
-                <Route path="/dinetogter/plan/:id" element={<Togt showLoader={setShowLoader} />} />
+                <Route path="/dinetogter/togt/:id" element={<Togt showLoader={setShowLoader} />} />
                 <Route path="/dinetogter" element={<DineTogter showLoader={setShowLoader} />} />
                 <Route path="/profile" element={<ProfilePage showLoader={setShowLoader} />} />
                 <Route path="/indbakke" element={<Indbakke showLoader={setShowLoader} />} />

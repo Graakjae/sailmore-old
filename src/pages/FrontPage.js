@@ -5,7 +5,7 @@ import logo from "../assets/img/logo.png";
 import captain from "../assets/img/captain.png";
 import sailor from "../assets/img/sailor.png";
 
-export default function SignInPage({ showLoader }) {
+export default function FrontPage({ showLoader }) {
   
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function SignInPage({ showLoader }) {
             <div className="square">
               <img src={sailor} alt="skipper" className="captain" />
                 <button>
-                    <Link to="/sign-up">Opret gasteprofil</Link>
+                    Opret gasteprofil
                   </button>
             </div>
           </div>
@@ -35,13 +35,13 @@ export default function SignInPage({ showLoader }) {
             <div className="square">
               <img src={captain} alt="skipper" className="captain" />
                 <button>
-                    <Link to="/sign-up">Opret skipperprofil</Link>
+                    <Link to="/sign-up" className="noDec">Opret skipperprofil</Link>
                   </button>
             </div>
           </div>
         </div>
           <button>
-            <Link to="/sign-in">Log ind</Link>
+            <Link className="noDec" to="/sign-in">Log ind</Link>
           </button>
         <p className="text-center">Har du glemt dit kodeord?</p>
       </main>

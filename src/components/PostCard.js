@@ -8,7 +8,7 @@ export default function PostCard({ post }) {
     
 
     function handleClick() {
-        navigate(`/dinetogter/plan/${post.id}`);
+        navigate(`/dinetogter/togt/${post.id}`);
     }
 
 

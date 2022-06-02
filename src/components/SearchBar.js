@@ -10,7 +10,7 @@ export default function SearchBar({ setValue }) {
   return (
     <article>
       <button className="buttonfilter">
-        <img src={filter} alt="filter" className="arrow"/>
+        <img src={filter} alt="filter" className="filter"/>
       </button>
       <input type="search" placeholder="Search" onChange={handleSearch} className="searchbar"/>
     </article>

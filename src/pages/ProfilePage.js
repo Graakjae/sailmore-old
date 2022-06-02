@@ -113,10 +113,10 @@ export default function ProfilePage({ showLoader }) {
         </label>
 
           <p className="text-error">{errorMessage}</p>
-          <button>Gem</button>
+          <button>Opdater oplysninger</button>
       </form>
       <button className="button-logud" onClick={handleSignOut}>
-        Logud
+        Log ud
       </button>
     </section>
   );

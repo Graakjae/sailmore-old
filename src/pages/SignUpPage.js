@@ -3,7 +3,6 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import React from "react";
 import logo from "../assets/img/logo.png";
-import onboarding from "../assets/img/onboarding.png";
 import { usersRef } from "../firebase-config";
 import { doc, setDoc } from "@firebase/firestore";
 import imgPlaceholder from "../assets/img/img-placeholder.jpg";
@@ -69,7 +68,6 @@ export default function SignUpPage({ showLoader }) {
   return (
     <section className="page">
       <img className="logo" src={logo} alt="Logo" />
-      <img className="logo" src={onboarding} alt="onboarding" />
       
       <form onSubmit={handleSignUp}>
         <label>
@@ -110,7 +108,7 @@ export default function SignUpPage({ showLoader }) {
             <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
             <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = imgPlaceholder)} />
         </label>
-        <button>Næste</button>
+        <button>Opret bruger</button>
       </form>
       <p className="text-center">
         Har du allerede en bruger? <Link to="/sign-in">Log in</Link>
