@@ -65,7 +65,7 @@ export default function ProfilePage({ showLoader }) {
         setErrorMessage(""); // reset errorMessage state
     } else {
         // if not below 0.5MB display an error message using the errorMessage state
-        setErrorMessage("The image file is too big!");
+        setErrorMessage("Billedet er for stort");
     }
 }
 
@@ -79,6 +79,8 @@ export default function ProfilePage({ showLoader }) {
             <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
             <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = imgPlaceholder)} />
         </label>
+
+          <p>{errorMessage}</p>
 
         <label>
           Navn
@@ -112,7 +114,7 @@ export default function ProfilePage({ showLoader }) {
             />
         </label>
 
-          <p className="text-error">{errorMessage}</p>
+          
           <button>Opdater oplysninger</button>
       </form>
       <button className="button-logud" onClick={handleSignOut}>

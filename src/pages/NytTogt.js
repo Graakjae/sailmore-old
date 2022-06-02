@@ -134,7 +134,7 @@ export default function NewFavList({ showLoader }) {
 
     function handleImageChange(event) {
         const file = event.target.files[0];
-        
+        if (file.size < 500000) {
             // image file size must be below 0,5MB
             const reader = new FileReader();
             reader.onload = event => {
@@ -142,7 +142,10 @@ export default function NewFavList({ showLoader }) {
             };
             reader.readAsDataURL(file);
             setErrorMessage(""); // reset errorMessage state
-        
+        } else {
+            // if not below 0.5MB display an error message using the errorMessage state
+            setErrorMessage("Billedet er for stort");
+        }
     }
 
     
@@ -233,9 +236,9 @@ export default function NewFavList({ showLoader }) {
                     <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
                     <img className="image-preview" src={image} alt="Choose" onError={e => (e.target.src = imgPlaceholder)} />
                 </label>
-                
+                <p>{errorMessage}</p>
                 <button type="submit">Opret togt</button>
-                <p className="text-error">{errorMessage}</p>
+                
             </form>
         </section>
     );
